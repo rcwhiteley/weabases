@@ -9,9 +9,9 @@
 </head>
 <body>
 
-<a href="/historial_atenciones.php?persona=17872056">Consultas historicas</a>
-
- <?php include'menu.html';
+ <?php 
+ 	include'menu.html';
+ 	if($_GET['persona']!="de"){
  	$run=$_GET['persona'];
 	$conexion = pg_connect("host=bdd.inf.udec.cl port=5432 dbname=bdi2018a user=bdi2018a password=bdi2018a")
     or die ("Fallo!!!!");
@@ -33,8 +33,17 @@
 		}
 	$query1="SELECT * FROM historial_atenciones WHERE run_paciente='$run'";
 		$rs1= pg_query($conexion, $query);
-
+	}
  ?>
-
+ <ul>
+	<li><a href="/historial_atenciones.php?persona=17872056">Consultas historicas</a></li>
+	<li><a href="/atenciones.php?persona=17872056">Medicos que lo han atendido</a></li>
+	<li><a href="/guardar_consulta.php">Crear nueva consulta</a></li>
+</ul>
+<form action="formget.php" method="get">
+    Nombre: <input type="text" name="nombre"><br>
+    Email: <input type="text" name="email"><br>
+    <input type="submit" value="Enviar">
+</form>
 </body>
 <html>

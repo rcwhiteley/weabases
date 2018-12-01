@@ -35,9 +35,11 @@
 			}	
 
 ?>
-	<!--<a href="/receta.php?persona=17872056">receta</a>;-->
-	<a href="/atenciones.php?persona=17872056">Medicos que lo han atendido</a>
-
+	
+<ul>
+	<li><a href="/atenciones.php?persona=de">Medicos que lo han atendido</a></li><!-- solucion mas callampa -->
+	
+</ul>
 
 </body>
 <html>
