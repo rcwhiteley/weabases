@@ -21,11 +21,6 @@
 				echo "<table class=\"table\" align=''rules=all >" ;
 				echo "<tr>";
 				echo "<th scope=\"col\">Datos paciente</th>";
-				//echo "<th scope=\"col\">Nombre</th>";
-				//echo "<th scope=\"col\">Fecha Nacimiento</th>";
-				//echo "<th scope=\"col\">Direccion</th>";
-				//echo "<th scope=\"col\">Correo Electronico</th>";
-				//echo "<th scope=\"col\">Telefono</th>";
 				echo "</tr>";
 				while ($obj = pg_fetch_object($rs)) {
 				echo "<tr><td>"."Run: "."</td><td>".$obj->run."</td>";
@@ -37,9 +32,14 @@
 				echo "</tr>";
 				}
 				echo "</table>";
-			}
-		
+			}		
 ?>
+
+		<form action="receta.php" method="get">
+   	 		rut: <input type="varchar(10)" name="rut"><br>
+   			consulta: <input type="text" name="consulta"><br>
+   			<input type="submit" value="Enviar">
+		</form>
 
 </body>
 <html>
