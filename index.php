@@ -36,7 +36,7 @@
 
 ?>
 	<!--<a href="/receta.php?persona=17872056">receta</a>;-->
-	<a href="/atenciones.php?persona=17872056">atenciones</a>
+	<a href="/atenciones.php?persona=17872056">Medicos que lo han atendido</a>
 
 
 </body>
