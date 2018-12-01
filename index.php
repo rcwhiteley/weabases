@@ -18,7 +18,7 @@
 		$query="SELECT * FROM persona WHERE run='17872056'";
 		$rs= pg_query($conexion, $query);
 			if ($rs) {
-				echo "<table class=\"table\" align=''rules=all >" ;
+				echo "<table class=\"table\" align='center'rules=all >" ;
 				echo "<tr>";
 				echo "<th scope=\"col\">Datos paciente</th>";
 				echo "</tr>";
@@ -32,14 +32,14 @@
 				echo "</tr>";
 				}
 				echo "</table>";
-			}		
-?>
+			}	
 
-		<form action="receta.php" method="get">
-   	 		rut: <input type="varchar(10)" name="rut"><br>
-   			consulta: <input type="text" name="consulta"><br>
-   			<input type="submit" value="Enviar">
-		</form>
+?>
+	
+<ul>
+	<li><a href="/atenciones.php?persona=de">Medicos que lo han atendido</a></li><!-- solucion mas callampa -->
+	
+</ul>
 
 </body>
 <html>
