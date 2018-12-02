@@ -1,0 +1,11 @@
+CREATE OR REPLACE FUNCTION insert_diagnostico()
+  RETURNS trigger AS
+$$
+BEGIN
+         INSERT INTO diagnostico(nombre_enfermedad,id_historial_atenciones)
+         VALUES(NEW.id, 'Desconocida');
+ 
+    RETURN NEW;
+END;
+$$
+LANGUAGE 'plpgsql';

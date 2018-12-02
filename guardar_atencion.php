@@ -15,10 +15,11 @@
 		//$rs=pg_query($conexion,$query);
 		$query1="insert into historial_atenciones(run_paciente,run_medico,fecha,razon) values (".$run_paciente.",".$run_medico.",'".$fecha."','".$razon."')";
 		$rs1=pg_query($conexion,$query1);
+		//$query2 = "insert into diagnostico (descripcion, nombre_enfermedad, id_historial_atenciones) values ('', 'Desconocida', "
 		//$query="insert into facultad(nombre,decano,vicedecano) values ('".$_POST["nombre"]."\' , \'".$_POST["decano"]."\',\'".$_POST["vicedecano"]."\');";
 
 		//$rs= pg_query($conexion, $query);
 
-		header("Location: http://localhost/index.php");
+		header("Location: /index.php");
 		die();
 ?>

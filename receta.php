@@ -33,17 +33,15 @@
         echo "<div class='row sm-4'>";
 		if ($rs) {
 			while ($obj = pg_fetch_object($rs)) {
-                for($i = 0; $i < 5; $i++){
                 echo '<div class="card mx-1 m-1">';
                 echo '<div class="card-body">';
-                echo '<h5 class="card-title">'.$obj->nombre_medicamento.' '.$i.'</h5>';
+                echo '<h5 class="card-title">'.$obj->nombre_medicamento.'</h5>';
                 echo '<p class="card-text">Cantidad diaria: '.$obj->cantidad_por_dia.'</p>';
                 echo '<p class="card-text">Indicacion: '.$obj->indicacion.'</p>';
                 echo '<p class="card-text">Fecha Emisión: '.$obj->fecha_emision.'</p>';
                 echo '<p class="card-text">Fecha Expiracion: '.$obj->fecha_termino.'</p>';
                 echo '<p class="card-text">Médico: '.$obj->nombre.'</p>';
                 echo '</div></div>';
-                }
             }
         }
         echo "</div>";

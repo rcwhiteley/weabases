@@ -39,8 +39,8 @@
 	}
  ?>
  <ul>
-	<li><a href="/historial_atenciones.php?persona=$_COOKIE['rut']">Consultas historicas</a></li>
-	<li><a href="/atenciones.php?persona=$_COOKIE['rut']">Medicos que lo han atendido</a></li>
+	<li><a href="/historial_atenciones.php">Consultas historicas</a></li>
+	<li><a href="/atenciones.php">Medicos que lo han atendido</a></li>
 	<li>
 		<ul>
 			<br>Ingresar nueva atencion<br>
