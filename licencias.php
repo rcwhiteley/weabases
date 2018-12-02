@@ -9,7 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/style/styles.css">
-    <title>Recetas</title>
+    <title>Licencias</title>
 </head>
 <body>
       
@@ -27,23 +27,19 @@
 
 
 		pg_query($conexion,$search_path);
-		$query="select medico.nombre, receta.* from atencion, medico, diagnostico, archivo, historial_atenciones, receta
-        where atencion.run_paciente='".$persona."' and medico.run = atencion.run_medico and historial_atenciones.run_medico = atencion.run_medico and historial_atenciones.run_paciente = atencion.run_paciente and diagnostico.id_historial_atenciones = historial_atenciones.id and archivo.id_diagnostico = diagnostico.id and receta.id = archivo.id";
+		$query="select medico.nombre, diagnostico.*, licencia.* from atencion, medico, diagnostico, archivo, historial_atenciones, licencia
+        where atencion.run_paciente='".$persona."' and medico.run = atencion.run_medico and historial_atenciones.run_medico = atencion.run_medico and historial_atenciones.run_paciente = atencion.run_paciente and diagnostico.id_historial_atenciones = historial_atenciones.id and archivo.id_diagnostico = diagnostico.id and licencia.id = archivo.id";
         $rs= pg_query($conexion, $query);
         echo "<div class='row sm-4'>";
 		if ($rs) {
 			while ($obj = pg_fetch_object($rs)) {
-                for($i = 0; $i < 5; $i++){
                 echo '<div class="card mx-1 m-1">';
                 echo '<div class="card-body">';
-                echo '<h5 class="card-title">'.$obj->nombre_medicamento.' '.$i.'</h5>';
-                echo '<p class="card-text">Cantidad diaria: '.$obj->cantidad_por_dia.'</p>';
-                echo '<p class="card-text">Indicacion: '.$obj->indicacion.'</p>';
-                echo '<p class="card-text">Fecha Emisión: '.$obj->fecha_emision.'</p>';
+                echo '<h5 class="card-title">'.$obj->nombre_enfermedad.'</h5>';
+                echo '<p class="card-text">Fecha Emisión: '.$obj->fecha_inicio.'</p>';
                 echo '<p class="card-text">Fecha Expiracion: '.$obj->fecha_termino.'</p>';
                 echo '<p class="card-text">Médico: '.$obj->nombre.'</p>';
                 echo '</div></div>';
-                }
             }
         }
         echo "</div>";

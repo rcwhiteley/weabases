@@ -12,7 +12,11 @@
  <?php 
  	include'menu.php';
  	if($_GET['persona']!="de"){
- 	$run=$_GET['persona'];
+	 $run;
+	 if(isset($_GET['persona']))
+		 $run=$_GET['persona'];
+	else
+		$run=$_COOKIE["rut"];
 	$conexion = pg_connect("host=bdd.inf.udec.cl port=5432 dbname=bdi2018a user=bdi2018a password=bdi2018a")
     or die ("Fallo!!!!");
     $search_path = "SET search_path TO proyecto"; 
