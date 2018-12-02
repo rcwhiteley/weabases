@@ -11,22 +11,6 @@
 	<?php
 	include'menu.php';
 	?>
- <ul>
-	<li><a href="/historial_atenciones.php?persona=$_COOKIE['rut']">Consultas historicas</a></li>
-	<li><a href="/atenciones.php?persona=$_COOKIE['rut']">Medicos que lo han atendido</a></li>
-	<li>
-		<ul>
-			<br>Ingresar nueva atencion<br>
-			<form action="guardar_atencion.php" method="get">
-				<li>Run Medico: <input type="varchar(10)" name="run_medico"><br></li>
-   				<li>Run Paciente: <input type="varchar(10)" name="run_paciente"><br></li>
-   				<li>Razon: <input type="text" name="razon"><br></li>
-   			<input type="submit" value="Enviar">
-			</form>
-		</ul>
-	</li>
-</ul>
-
  <?php 
 
  	if(isset($_GET['persona'])){
@@ -54,6 +38,20 @@
 		$rs1= pg_query($conexion, $query);
 	}
  ?>
-
+ <ul>
+	<li><a href="/historial_atenciones.php?persona=$_COOKIE['rut']">Consultas historicas</a></li>
+	<li><a href="/atenciones.php?persona=$_COOKIE['rut']">Medicos que lo han atendido</a></li>
+	<li>
+		<ul>
+			<br>Ingresar nueva atencion<br>
+			<form action="guardar_atencion.php" method="get">
+				<li>Run Medico: <input type="varchar(10)" name="run_medico"><br></li>
+   				<li>Run Paciente: <input type="varchar(10)" name="run_paciente"><br></li>
+   				<li>Razon: <input type="text" name="razon"><br></li>
+   			<input type="submit" value="Enviar">
+			</form>
+		</ul>
+	</li>
+</ul>
 </body>
 <html>

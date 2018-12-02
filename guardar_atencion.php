@@ -8,17 +8,17 @@
 		$run_medico=$_GET['run_medico'];
 		$razon=$_GET['razon'];
 		date_default_timezone_set('UCT');
-		$fecha = date("Y-m-d H:i:s");
+		$fecha = date("Y-m-d G:i:s");
+		//echo $fecha;
 
-		$query="insert into atencion(run_paciente,run_medico) values ($run_paciente,$run_medico)";
-		$rs=pg_query($conexion,$query);
-		
-		$query1="insert into atencion(run_paciente,run_medico,fecha,razon) values ($run_paciente,$run_medico,$fecha,$razon)";
+		//$query="insert into atencion(run_paciente,run_medico) values ($run_paciente,$run_medico)";
+		//$rs=pg_query($conexion,$query);
+		$query1="insert into historial_atenciones(run_paciente,run_medico,fecha,razon) values (".$run_paciente.",".$run_medico.",'".$fecha."','".$razon."')";
 		$rs1=pg_query($conexion,$query1);
 		//$query="insert into facultad(nombre,decano,vicedecano) values ('".$_POST["nombre"]."\' , \'".$_POST["decano"]."\',\'".$_POST["vicedecano"]."\');";
 
 		//$rs= pg_query($conexion, $query);
 
-		//header("Location: http://localhost/index.php");
-		//die();
+		header("Location: http://localhost/index.php");
+		die();
 ?>
