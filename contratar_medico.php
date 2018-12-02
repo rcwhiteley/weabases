@@ -9,19 +9,30 @@
 		pg_query($conexion,$search_path);
 
 		$run_medico=$_GET['run'];
-		$direccion=$_GET['sucursal'];
+		$direccion_sucursal=$_GET['sucursal'];
 		$fecha_ingreso=$_GET['fecha_ingreso'];
 		$fecha_salida=$_GET['fecha_salida'];
-		$hora_ingreso=$_GET['hora_ingreso'];
 		$hora_salida=$_GET['hora_salida'];
+		$hora_entrada=$_GET['hora_entrada'];
 		$rut_centro_medico=$_COOKIE['rut'];
-		//echo $direccion."\n";
-		//echo $tipo."\n";
-		//echo $rut."\n";
+		
 
-		$query="insert into sucursal(rut,direccion,tipo) values (".$rut.",'".$direccion."','".$tipo."')";
+		//$hora_entrada2 = try_cast('$hora_entrada', time);
+		//echo $hora_entrada2;
+		//fecha_ingreso,fecha_salida,hora_ingreso,hora_salida
+		//para el historial laboral
+		$query="insert into historial_laboral(fecha_ingreso,fecha_salida,hora_entrada,hora_salida) values ('$fecha_ingreso','$fecha_salida','$hora_entrada','$hora_salida') returning id";
+		echo $query;
+		
 		$rs=pg_query($conexion,$query);
-
-		header("Location: http://localhost/sucursal.php");
-		die();
+		$row = pg_fetch_array($rs);
+		$id_historial = $row['0'];
+		$rut_centro_medico = $_COOKIE['rut'];
+		//para trabaja
+		//run medico, rut_centro_medico, direccion_sucursal, id_historial
+		$query1="insert into trabaja(run_medico,rut_centro_medico,direccion_sucursal,id_historial) values ($run_medico,$rut_centro_medico,'$direccion_sucursal',$id_historial)";
+		$rs1=pg_query($conexion,$query1);
+		
+		//header("Location: http://localhost/sucursal.php");
+		//die();
 ?>

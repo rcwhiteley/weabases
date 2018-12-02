@@ -39,25 +39,51 @@
  		<ul>
  			<li><a href='/medicos.php?ver=todos'>Ver Medicos</a></li>
 			<br>Contratar Medico<br>
-			<form action="contratar_medico.php" method="get">
+			<form action="contratar_medico.php" method="get" class = "form-group">
 				<!--<li>Nombre Medico: <input type="varchar(100)" name="Nombre"><br></li> -->
-   				<li>Run Medico: <input type="varchar(10)" name="run"><br></li>
-   				<li>Direccion Sucursal: <input type="varchar(100)" name="sucursal"><br></li>
-   				<li>Fecha Ingreso: <input type="varchar(50)" name="fecha_ingreso"><br></li>
-   				<li>Fecha Salida: <input type="varchar(50)" name="fecha_salida"><br></li>
-   				<li>Hora Ingreso: <input type="varchar(50)" name="hora_ingreso"><br></li>
-   				<li>Hora Salida: <input type="varchar(50)" name="hora_salida"><br></li>
-   			<input type="submit" value="Enviar">
-			</form>
-		</ul>
+   				<div class="form-group">
+   					<labe> Run Medico</labe>
+   					<input type="varchar(10)" class="form-control" placeholder="run medico" name="run"><br>
+   				</div>
+   				<div class="form-group">
+   					<labe> Direccion Sucursal</labe>
+   					<input type="varchar(100)" placeholder="direccion sucursal" name="sucursal"><br>
+   				</div>
+   				<div class="form-group">
+   					<labe> Fecha Ingreso</labe>
+   					<input type="date" name="fecha_ingreso" placeholder="Fecha Ingreso"><br>
+   				</div>
 
- 		<ul>
-			<br>Despedir Medico<br>
-			<form action="eliminar_sucursal.php" method="get">
-				<li>Direccion: <input type="varchar(100)" name="direccion"><br></li>
-   				<li>Tipo: <input type="varchar(50)" name="tipo"><br></li>
-   			<input type="submit" value="Enviar">
+   				<div class="form-group">
+   					<labe> Fecha Salida</labe>
+   					<input type="date" name="fecha_salida" placeholder="Fecha Salida"><br>
+   				</div>
+
+   				<div class="form-group">
+   					<labe> Hora Entrada</labe>
+   					<input type="time" name="hora_entrada" step="2"><br>
+   				</div>
+
+   				<div class="form-group">
+   					<labe> Hora Salida</labe>
+   					<input type="time" name="hora_salida" step="2"><br>
+   				</div>
+   					<input type="submit" value="Enviar">
 			</form>
+
+			<br>Despedir Medico de un Sucursal:<br>
+				<form action="despedir_medico.php" method="get" class="form-group">
+					<div class="form-group">
+   						<labe> Direccion Sucursal:</labe>
+   						<input type="varchar(100)" name="direccion" placeholder="Direccion Sucursal"><br>
+   					</div>
+   					<div class="form-group">
+   						<labe> Run Medico</labe>
+   				 		<input type="varchar(10)" name="run_medico" placeholder="Run del sujeto"><br>
+   					</div>
+   				<input type="submit" value="Enviar">
+			</form>
+
 		</ul>
 
 </body>

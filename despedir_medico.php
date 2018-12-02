@@ -5,17 +5,17 @@
     	$search_path = "SET search_path TO proyecto";
 		pg_query($conexion,$search_path);
 
-		$direccion=$_GET['direccion'];
-		$tipo=$_GET['tipo'];
-		$rut_=$_COOKIE['rut'];
+		$direccion_sucursal=$_GET['direccion'];
+		$run_medico=$_GET['run_medico'];
+		$rut_centro_medico=$_COOKIE['rut'];
 
 		//echo $direccion."\n";
 		//echo $tipo."\n";
 		//echo $rut."\n";
-		$query="insert into sucursal(rut,direccion,tipo) values (".$rut_.",'".$direccion."','".$tipo."') returning rut,direccion";
+
+		$query="delete from trabaja where rut_centro_medico='$rut_centro_medico' and direccion_sucursal='$direccion_sucursal' and run_medico='$run_medico'";
 		$rs=pg_query($conexion,$query);
-		//echo $rs;
-		//echo $query;
+		
 		header("Location: http://localhost/sucursal.php");
 		die();
 ?>

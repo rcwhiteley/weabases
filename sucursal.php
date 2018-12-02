@@ -14,18 +14,28 @@
 
  		<ul>
 			<br>Ingresar nueva sucursal<br>
-			<form action="guardar_sucursal.php" method="get">
-				<li>Direccion: <input type="varchar(100)" name="direccion"><br></li>
-   				<li>Tipo: <input type="varchar(50)" name="tipo"><br></li>
+			<form action="guardar_sucursal.php" method="get" class="form-group">
+				<div class="form-group">
+   					<labe> Direccion Nueva Sucursal:</labe>
+   					<input type="varchar(100)" name="direccion" placeholder="Direccion Sucursal"><br>
+   				</div>
+   				<div class="form-group">
+   					<labe> Tipo Sucursal:</labe>
+   				 	<input type="varchar(50)" name="tipo" placeholder="Tipo de Sucursal"><br>
+   				</div>
    			<input type="submit" value="Enviar">
 			</form>
-		</ul>
-
- 		<ul>
-			<br>Eliminar nueva sucursal<br>
-			<form action="eliminar_sucursal.php" method="get">
-				<li>Direccion: <input type="varchar(100)" name="direccion"><br></li>
-   				<li>Tipo: <input type="varchar(50)" name="tipo"><br></li>
+	
+			<br>Eliminar sucursal:<br>
+			<form action="eliminar_sucursal.php" method="get" class="form-group">
+				<div class="form-group">
+   					<labe> Direccion Sucursal:</labe>
+   					<input type="varchar(100)" name="direccion" placeholder="Direccion Sucursal"><br>
+   				</div>
+   				<div class="form-group">
+   					<labe> Tipo Sucursal</labe>
+   				 	<input type="varchar(50)" name="tipo" placeholder="Tipo de Sucursal"><br>
+   				</div>
    			<input type="submit" value="Enviar">
 			</form>
 		</ul>
