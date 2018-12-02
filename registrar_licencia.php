@@ -19,9 +19,9 @@
     $fecha_expiracion = strtotime($fecha_emision."+ ".$dias." days");
     $fecha_expiracion = date("Y-m-d", $fecha_expiracion);
     echo $fecha_expiracion;
-    $query = "insert into licencia (id, fecha_emision, fecha_termino) values ($id, '$fecha_emision', '$fecha_expiracion')";
+    $query = "insert into licencia (id, fecha_inicio, fecha_termino) values ($id_archivo, '$fecha_emision', '$fecha_expiracion')";
     echo $query;
     pg_query($conexion, $query);
-    header("Location: /atencion.php?id=".$id_atencion);
-    die();
+    //header("Location: /atencion.php?id=".$id_atencion);
+    //die();
 ?>

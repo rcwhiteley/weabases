@@ -26,10 +26,17 @@
         $search_path = "SET search_path TO proyecto"; //En caso de que tengan una base de datos distinta del esquema public
 
 
-		pg_query($conexion,$search_path);
-		$query="select medico.nombre, receta.* from atencion, medico, diagnostico, archivo, historial_atenciones, receta
+        pg_query($conexion,$search_path);
+        $query="select medico.nombre, receta.* from atencion, medico, diagnostico, archivo, historial_atenciones, receta
         where atencion.run_paciente='".$persona."' and medico.run = atencion.run_medico and historial_atenciones.run_medico = atencion.run_medico and historial_atenciones.run_paciente = atencion.run_paciente and diagnostico.id_historial_atenciones = historial_atenciones.id and archivo.id_diagnostico = diagnostico.id and receta.id = archivo.id";
-        $rs= pg_query($conexion, $query);
+        
+        if(isset($_GET['diagnostico'])){
+            $diagnostico = $_GET['diagnostico'];
+            $query = "select medico.nombre, receta.* from atencion, medico, diagnostico, archivo, historial_atenciones, receta
+            where diagnostico.id=$diagnostico and medico.run = atencion.run_medico and historial_atenciones.run_medico = atencion.run_medico and historial_atenciones.run_paciente = atencion.run_paciente and diagnostico.id_historial_atenciones = historial_atenciones.id and archivo.id_diagnostico = diagnostico.id and receta.id = archivo.id";
+        }
+        
+		$rs= pg_query($conexion, $query);
         echo "<div class='row sm-4'>";
 		if ($rs) {
 			while ($obj = pg_fetch_object($rs)) {

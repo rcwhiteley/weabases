@@ -113,11 +113,11 @@
                 echo '</div>';
                 echo '<div class="row mx-5">';
                 
-                echo '<button class="btn btn-primary m-3"> Ver recetas</button>';  
+                echo '<input class="btn btn-primary m-3" type="button" onclick="location.href=\'/receta.php?diagnostico='.$id_diagnostico.'\';" value="Ver recetas" />';
                 if($soyMedico)
                 echo '<button addreceta='.$id_diagnostico.' id="addReceta" class="btn btn-primary m-3"> Agregar receta</button>';
-        
-                echo '<button class="btn btn-primary m-3"> Ver licencias</button>';  
+                
+                echo '<input class="btn btn-primary m-3" type="button" onclick="location.href=\'/licencias.php?diagnostico='.$id_diagnostico.'\';" value="Ver licencias" />';
                 if($soyMedico)
                 echo '<button addlicencia='.$id_diagnostico.' class="btn btn-primary m-3"> Agregar Licencia</button>';
                 
