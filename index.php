@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<?php include 'menu.html';
+<?php include 'menu.php';
 	$conexion = pg_connect("host=bdd.inf.udec.cl port=5432 dbname=bdi2018a user=bdi2018a password=bdi2018a")
     or die ("Fallo!!!!");
     $search_path = "SET search_path TO proyecto"; //En caso de que tengan una base de datos distinta del esquema public

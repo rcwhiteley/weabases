@@ -10,7 +10,7 @@
 <body>
 
  <?php 
- 	include'menu.html';
+ 	include'menu.php';
  	if($_GET['persona']!="de"){
  	$run=$_GET['persona'];
 	$conexion = pg_connect("host=bdd.inf.udec.cl port=5432 dbname=bdi2018a user=bdi2018a password=bdi2018a")
