@@ -45,6 +45,7 @@
         <div class="form-group">
             <button name="paciente" type="submit" class="btn btn-primary btn-block">Paciente</button>
             <button name="medico" type="submit" class="btn btn-primary btn-block">Médico</button>
+            <button name="centro_medico" type="submit" class="btn btn-primary btn-block">Centro Medico</button>
              
         </div>
         <!--<div class="clearfix">

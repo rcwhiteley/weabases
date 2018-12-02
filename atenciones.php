@@ -8,7 +8,8 @@
    <title>PACIENTE.</title>
 </head>
 <body>
-	<?php
+<?php
+	//$_COOKIE["rut"] y sabes si es medico o paciente con _$COOKIE["tipo"] == "paciente"
 	include'menu.php';
 	?>
  <?php 
