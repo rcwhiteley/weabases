@@ -15,7 +15,14 @@
 
 		$query="delete from trabaja where rut_centro_medico='$rut_centro_medico' and direccion_sucursal='$direccion_sucursal' and run_medico='$run_medico'";
 		$rs=pg_query($conexion,$query);
-		
-		header("Location: http://localhost/sucursal.php");
+		$tuplasafectadas=pg_affected_rows($rs);
+		if($tuplasafectadas==1){
+			echo "Despedido :[, causa:se comenta acoso sexual";
+		}
+		else{
+			echo "Dios lo quiere, siga trabajando";
+		}
+		echo "<br> redireccion en 3 seg";
+		header("refresh:3; url=http://localhost/medicos.php");
 		die();
 ?>

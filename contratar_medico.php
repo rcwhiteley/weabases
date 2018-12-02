@@ -22,7 +22,7 @@
 		//fecha_ingreso,fecha_salida,hora_ingreso,hora_salida
 		//para el historial laboral
 		$query="insert into historial_laboral(fecha_ingreso,fecha_salida,hora_entrada,hora_salida) values ('$fecha_ingreso','$fecha_salida','$hora_entrada','$hora_salida') returning id";
-		echo $query;
+		//echo $query;
 		
 		$rs=pg_query($conexion,$query);
 		$row = pg_fetch_array($rs);
@@ -32,7 +32,15 @@
 		//run medico, rut_centro_medico, direccion_sucursal, id_historial
 		$query1="insert into trabaja(run_medico,rut_centro_medico,direccion_sucursal,id_historial) values ($run_medico,$rut_centro_medico,'$direccion_sucursal',$id_historial)";
 		$rs1=pg_query($conexion,$query1);
-		
-		//header("Location: http://localhost/sucursal.php");
-		//die();
+
+		$tuplasafectadas=pg_affected_rows($rs1);
+		if($tuplasafectadas==1){
+			echo "CONTRATADO...no pagamos impuestos";
+		}
+		else{
+			echo "Retirese porfavor";
+		}
+		echo "<br> redireccion en 3 seg";
+		header("refresh:3; url=http://localhost/medicos.php");
+		die();
 ?>
