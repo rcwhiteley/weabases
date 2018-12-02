@@ -8,15 +8,30 @@
    <title>PACIENTE.</title>
 </head>
 <body>
+	<?php
+	include'menu.php';
+	?>
+ <ul>
+	<li><a href="/historial_atenciones.php?persona=$_COOKIE['rut']">Consultas historicas</a></li>
+	<li><a href="/atenciones.php?persona=$_COOKIE['rut']">Medicos que lo han atendido</a></li>
+	<li>
+		<ul>
+			<br>Ingresar nueva atencion<br>
+			<form action="guardar_atencion.php" method="get">
+				<li>Run Medico: <input type="varchar(10)" name="run_medico"><br></li>
+   				<li>Run Paciente: <input type="varchar(10)" name="run_paciente"><br></li>
+   				<li>Razon: <input type="text" name="razon"><br></li>
+   			<input type="submit" value="Enviar">
+			</form>
+		</ul>
+	</li>
+</ul>
 
  <?php 
- 	include'menu.php';
- 	if($_GET['persona']!="de"){
-	 $run;
-	 if(isset($_GET['persona']))
-		 $run=$_GET['persona'];
-	else
-		$run=$_COOKIE["rut"];
+
+ 	if(isset($_GET['persona'])){
+ 	$run=$_COOKIE['rut'];
+ 	//$run=$_GET['persona'];
 	$conexion = pg_connect("host=bdd.inf.udec.cl port=5432 dbname=bdi2018a user=bdi2018a password=bdi2018a")
     or die ("Fallo!!!!");
     $search_path = "SET search_path TO proyecto"; 
@@ -39,15 +54,6 @@
 		$rs1= pg_query($conexion, $query);
 	}
  ?>
- <ul>
-	<li><a href="/historial_atenciones.php?persona=17872056">Consultas historicas</a></li>
-	<li><a href="/atenciones.php?persona=17872056">Medicos que lo han atendido</a></li>
-	<li><a href="/guardar_consulta.php">Crear nueva consulta</a></li>
-</ul>
-<form action="formget.php" method="get">
-    Nombre: <input type="text" name="nombre"><br>
-    Email: <input type="text" name="email"><br>
-    <input type="submit" value="Enviar">
-</form>
+
 </body>
 <html>
