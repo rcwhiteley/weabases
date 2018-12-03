@@ -5,15 +5,14 @@
     	$search_path = "SET search_path TO proyecto";
 		pg_query($conexion,$search_path);
 
-		$direccion_sucursal=$_GET['direccion'];
-		$run_medico=$_GET['run_medico'];
+		$historial_id=$_GET['historial_id'];
 		$rut_centro_medico=$_COOKIE['rut'];
 
 		//echo $direccion."\n";
 		//echo $tipo."\n";
 		//echo $rut."\n";
 
-		$query="delete from trabaja where rut_centro_medico='$rut_centro_medico' and direccion_sucursal='$direccion_sucursal' and run_medico='$run_medico'";
+		$query="update historial_laboral set fecha_salida=now() where id=$historial_id";
 		$rs=pg_query($conexion,$query);
 		$tuplasafectadas=pg_affected_rows($rs);
 		if($tuplasafectadas==1){
@@ -22,7 +21,7 @@
 		else{
 			echo "Dios lo quiere, siga trabajando";
 		}
-		echo "<br> redireccion en 3 seg";
-		header("refresh:3; url=http://localhost/medicos.php");
+		//echo "<br> redireccion en 3 seg";
+		header("Location: /medicos.php");
 		die();
 ?>

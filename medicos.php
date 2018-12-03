@@ -45,18 +45,21 @@
 							?>
 						</select>
 					</div>
+			
 					<div class="form-group">
-						<input class="form-control" type="date" name="fecha_ingreso" placeholder="Fecha Ingreso">
-					</div>
-					<div class="form-group">
+						
+						<label>Fecha termino contrato</label>
 						<input class="form-control" type="date" name="fecha_salida" placeholder="Fecha Salida">
 					</div>
 
 					<div class="form-group">
+						
+						<label>Hora de entrada </label>
 						<input class="form-control" type="time" name="hora_entrada" step="2">
 					</div>
 
 					<div class="form-group">
+						<label>Hora de salida </label>
 						<input class="form-control" type="time" name="hora_salida" step="2">
 					</div>
 						<input class="btn btn-primary" type="submit" value="Enviar">
@@ -64,63 +67,44 @@
 				</div>
 			</div>
 		</div>
-		<div class="col">
-			<div class="card my-5 mr-5">
-				<div class="card-header">Médicos</div>
-				<div class="card-body">
-								
-					<form action="despedir_medico.php" method="get" class="form-group">
-						<div class="form-group">
-   							<input type="varchar(100)" name="direccion" placeholder="Direccion Sucursal"><br>
-   						</div>
-   						<div class="form-group">
-   							<input type="varchar(10)" name="run_medico" placeholder="Run del sujeto"><br>
-   						</div>
-   						<input type="submit" value="Enviar">
-					</form>
-				</div>
+		<div class="col"></div>
+	</div>
+		
+	<div class="card mx-5">
+		<div class="card-header">Médicos</div>
+			<div class="card-body">
+				<table class="table">
+					<tr>
+						<th>Centro médico</th>
+						<th>Sucursal</th>
+						<th>Nombre médico</th>
+					</tr>
+					<?php
+					$rut=$_COOKIE['rut'];
+					$conexion = pg_connect("host=bdd.inf.udec.cl port=5432 dbname=bdi2018a user=bdi2018a password=bdi2018a")
+						or die ("Fallo!!!!");
+					$search_path = "SET search_path TO proyecto"; 
+					pg_query($conexion,$search_path);
+				
+					$query="SELECT medico.*, historial_laboral.id as historial_id, sucursal.direccion as direccion, centro_medico.nombre as nombre_centro FROM centro_medico,trabaja,historial_laboral, medico, sucursal where
+					trabaja.id_historial=historial_laboral.id and centro_medico.rut = sucursal.rut and trabaja.rut_centro_medico = sucursal.rut
+					and trabaja.direccion_sucursal=sucursal.direccion and medico.run=trabaja.run_medico and fecha_salida > now()
+					and sucursal.rut='$rut'";
+					$rs= pg_query($conexion, $query);
+					if ($rs) {
+						while ($obj = pg_fetch_object($rs)) {
+							echo '<tr><td>'.$obj->nombre_centro.'</td><td>'.$obj->direccion.'</td><td>'.$obj->nombre.'</td>
+							<td><a href="/despedir_medico.php?historial_id='.$obj->historial_id.'">Despedir</a></td></tr>';
+						}
+					}
+				?>
+				</table>
+				
 			</div>
 		</div>
 	</div>
 
-			<br>Despedir Medico de un Sucursal:<br>
-				<form action="despedir_medico.php" method="get" class="form-group">
-					<div class="form-group">
-   						<labe> Direccion Sucursal:</labe>
-   						<input type="varchar(100)" name="direccion" placeholder="Direccion Sucursal"><br>
-   					</div>
-   					<div class="form-group">
-   						<labe> Run Medico</labe>
-   				 		<input type="varchar(10)" name="run_medico" placeholder="Run del sujeto"><br>
-   					</div>
-   				<input type="submit" value="Enviar">
-			</form>
+			
 
-		</ul>
-
-
-
-	<?php 
- 		$rut=$_COOKIE['rut'];
-		$conexion = pg_connect("host=bdd.inf.udec.cl port=5432 dbname=bdi2018a user=bdi2018a password=bdi2018a")
-   			 or die ("Fallo!!!!");
-   		$search_path = "SET search_path TO proyecto"; 
-		pg_query($conexion,$search_path);
-	
-		$query="SELECT * FROM trabaja WHERE rut_centro_medico='$rut'";
-		$rs= pg_query($conexion, $query);
-		if ($rs) {
-			echo "<table class='table'>" ;
-			echo "<tr>";
-			echo "<th scope=\"col\">Medicos</th>";
-			echo "</tr>";
-			while ($obj = pg_fetch_object($rs)) {
-				echo "<td><blockquote>"."Rut: ".$obj->run_medico."</blockquote></td>";
-				echo "<td><blockquote>"."Direccion: ".$obj->direccion_sucursal."</blockquote></td>";
-				echo "</tr>";
-			}
-			echo "</table>";
-		}
- 	?>
 </body>
 <html>

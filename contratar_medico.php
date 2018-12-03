@@ -10,7 +10,6 @@
 
 		$run_medico=$_GET['run'];
 		$direccion_sucursal=$_GET['sucursal'];
-		$fecha_ingreso=$_GET['fecha_ingreso'];
 		$fecha_salida=$_GET['fecha_salida'];
 		$hora_salida=$_GET['hora_salida'];
 		$hora_entrada=$_GET['hora_entrada'];
@@ -21,7 +20,7 @@
 		//echo $hora_entrada2;
 		//fecha_ingreso,fecha_salida,hora_ingreso,hora_salida
 		//para el historial laboral
-		$query="insert into historial_laboral(fecha_ingreso,fecha_salida,hora_entrada,hora_salida) values ('$fecha_ingreso','$fecha_salida','$hora_entrada','$hora_salida') returning id";
+		$query="insert into historial_laboral(fecha_ingreso,fecha_salida,hora_entrada,hora_salida) values (current_date,'$fecha_salida','$hora_entrada','$hora_salida') returning id";
 		//echo $query;
 		
 		$rs=pg_query($conexion,$query);
@@ -40,7 +39,7 @@
 		else{
 			echo "Retirese porfavor";
 		}
-		echo "<br> redireccion en 3 seg";
-		header("refresh:3; url=http://localhost/medicos.php");
+		//echo "<br> redireccion en 3 seg";
+		header("Location: /medicos.php");
 		die();
 ?>
