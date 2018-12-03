@@ -28,6 +28,7 @@
     $query="SELECT *, diagnostico.id as id_diagnostico FROM historial_atenciones, diagnostico,medico WHERE historial_atenciones.id='".$id."' and historial_atenciones.run_medico=medico.run and diagnostico.id_historial_atenciones = historial_atenciones.id";
 
     $id_diagnostico = -1;
+    if($soyMedico){
     echo '
     <form action="/registrar_diagnostico.php?id='.$id.'" action="get">
         <div class="form-group hidden">
@@ -35,6 +36,7 @@
         </div>
         <input class="btn btn-primary ml-2" type="submit" value="Crear diagnostico" />
     </form>';
+    }
 		$result= pg_query($conexion, $query);
 		if ($result) {
            
@@ -277,6 +279,8 @@ $(document).ready(function(){
             $("#cambiarEnfermedadModal").modal();
         });
     });
+    $("#perfil").removeClass("active");
+    $("#atenciones").addClass("active");
     //$("#addReceta").click(function(){
     //    $("#addRecetaModal").modal();
     //});

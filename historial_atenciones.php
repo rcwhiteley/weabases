@@ -17,11 +17,15 @@
  <?php include'menu.php';
 	echo "<div class='container  m-5'>";
 	$run=$_COOKIE['rut'];
+	$soyMedico = $_COOKIE['tipo'] == "medico";
 	$conexion = pg_connect("host=bdd.inf.udec.cl port=5432 dbname=bdi2018a user=bdi2018a password=bdi2018a")
     or die ("Fallo!!!!");
     $search_path = "SET search_path TO proyecto"; 
 	pg_query($conexion,$search_path);
-	$query="SELECT * FROM historial_atenciones,medico WHERE run_paciente='$run' and historial_atenciones.run_medico=medico.run";
+	$query="SELECT * FROM historial_atenciones,medico WHERE run_paciente='$run' and historial_atenciones.run_medico=medico.run order by fecha desc";
+	if($soyMedico){
+		$query="SELECT * FROM historial_atenciones,medico WHERE medico.run='$run' and historial_atenciones.run_medico=medico.run order by fecha desc";
+	}
 		$rs= pg_query($conexion, $query);
 		if ($rs) {
 			echo "<table class='table table-hover my-5' align>" ;
@@ -49,6 +53,11 @@
 
 	echo "</div>";
  ?>
-
+<script>
+$(document).ready(function(){
+	$("#perfil").removeClass("active");
+	$("#atenciones").addClass("active");
+});
+</script>
 </body>
 <html>

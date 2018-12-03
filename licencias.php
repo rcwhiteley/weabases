@@ -58,7 +58,10 @@
         
 </div>
 <script>
-
+$(document).ready(function(){
+	$("#perfil").removeClass("active");
+	$("#licencias").addClass("active");
+});
 </script>
 </body>
 <html>

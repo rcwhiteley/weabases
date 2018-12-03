@@ -35,7 +35,7 @@
             $query = "select medico.nombre, receta.* from atencion, medico, diagnostico, archivo, historial_atenciones, receta
             where diagnostico.id=$diagnostico and medico.run = atencion.run_medico and historial_atenciones.run_medico = atencion.run_medico and historial_atenciones.run_paciente = atencion.run_paciente and diagnostico.id_historial_atenciones = historial_atenciones.id and archivo.id_diagnostico = diagnostico.id and receta.id = archivo.id";
         }
-        
+
 		$rs= pg_query($conexion, $query);
         echo "<div class='row sm-4'>";
 		if ($rs) {
@@ -57,7 +57,10 @@
         
 </div>
 <script>
-
+$(document).ready(function(){
+	$("#perfil").removeClass("active");
+	$("#recetas").addClass("active");
+});
 </script>
 </body>
 <html>
