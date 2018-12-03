@@ -25,6 +25,6 @@
 
 		//$rs= pg_query($conexion, $query);
 
-		//header("Location: /index.php");
-		//die();
+		header("Location: /atenciones.php");
+		die();
 ?>
