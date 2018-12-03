@@ -13,10 +13,12 @@
 </head>
 <body>
 
+
 <?php
 //include 'menu.php';
 	if($_COOKIE["tipo"] == "paciente" or $_COOKIE["tipo"] == "medico"){
 	include 'menu.php';
+	echo '<div class="cotainer m-5">';
 	$soyMedico = $_COOKIE["tipo"] == "medico";
 	$run = $_COOKIE["rut"];
 	$conexion = pg_connect("host=bdd.inf.udec.cl port=5432 dbname=bdi2018a user=bdi2018a password=bdi2018a")
@@ -32,9 +34,7 @@
 			if ($rs) {
 				echo "<table class='table' >" ;
 				echo "<tr>";
-				echo '<th></th>';
-				echo '<th></th>';
-				//echo "<th scope=\"col\">Datos paciente</th>";
+				echo "<th scope=\"col\">Datos personales</th>";
 				echo "</tr>";
 				while ($obj = pg_fetch_object($rs)) {
 				echo "<tr><td>"."Run "."</td><td>".$obj->run."</td></tr>";
@@ -80,6 +80,7 @@
 		}
 
 ?>
+</div>
 <script>
 $(document).ready(function(){
 	$("#perfil").addClass("active");
