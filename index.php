@@ -65,7 +65,7 @@
 			$query="SELECT * FROM centro_medico WHERE rut='$rut'";
 			$rs= pg_query($conexion,$query);
 			if ($rs) {
-				echo "<table class=\"table\" align='center'rules=all >" ;
+				echo "<table class='table m-5' >" ;
 				echo "<tr>";
 				echo "<th scope=\"col\">Datos Centro Medico</th>";
 				echo "</tr>";
