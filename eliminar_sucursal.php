@@ -12,10 +12,11 @@
 		//echo $direccion."\n";
 		//echo $tipo."\n";
 		//echo $rut."\n";
-
-		$query="delete from sucursal where rut='$rut' and direccion='$direccion' and tipo='$tipo'";
+		//trigger deberia ir aca
+		$query="delete from trabaja where direccion_sucursl='$direccion' and rut_centro_medico='$rut'";
+		$query="delete from sucursal where rut='$rut' and direccion='$direccion'";
 		$rs=pg_query($conexion,$query);
 		
-		header("Location: http://localhost/sucursal.php");
-		die();
+		//header("Location: /sucursal.php");
+		//die();
 ?>

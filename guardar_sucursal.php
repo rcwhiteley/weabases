@@ -16,6 +16,6 @@
 		$rs=pg_query($conexion,$query);
 		//echo $rs;
 		//echo $query;
-		header("Location: http://localhost/sucursal.php");
+		header("Location: /sucursal.php");
 		die();
 ?>
